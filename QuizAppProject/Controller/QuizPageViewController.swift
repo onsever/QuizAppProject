@@ -37,6 +37,7 @@ class QuizPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .darkCharcoal
         navigationItem.title = "Quiz App"
         navigationItem.setHidesBackButton(true, animated: true)
         
@@ -140,7 +141,7 @@ extension QuizPageViewController {
             questionLabel.centerYAnchor.constraint(equalTo: questionContainerView.centerYAnchor),
             questionLabel.leadingAnchor.constraint(equalTo: questionContainerView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             questionLabel.trailingAnchor.constraint(equalTo: questionContainerView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            questionLabel.heightAnchor.constraint(equalToConstant: 75)
+            questionLabel.heightAnchor.constraint(equalToConstant: 85)
             
         ])
     }

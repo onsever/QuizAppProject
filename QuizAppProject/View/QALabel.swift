@@ -30,6 +30,7 @@ class QALabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         textAlignment = .center
         textColor = .white
+        adjustsFontSizeToFitWidth = true
     }
 
 }
