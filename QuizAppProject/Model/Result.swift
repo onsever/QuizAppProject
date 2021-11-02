@@ -8,11 +8,19 @@
 import Foundation
 
 class Result {
-    var resultImage: String
-    var resultText: String
+    private var resultImage: String
+    private var resultText: String
     
     init(resultImage: String, resultText: String) {
         self.resultImage = resultImage
         self.resultText = resultText
+    }
+    
+    public func getResultImage() -> String {
+        return self.resultImage
+    }
+    
+    public func getResultText() -> String {
+        return self.resultText
     }
 }

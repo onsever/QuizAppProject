@@ -9,7 +9,7 @@ import Foundation
 
 final class QuizGame {
     
-    static let shared = QuizGame()
+    public static let shared = QuizGame()
     
     init() {}
     

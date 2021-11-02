@@ -19,7 +19,7 @@ class QuizPageViewController: UIViewController {
     private var randomQuestion: Int = Int.random(in: 0..<QuizGame.shared.questions.count)
     private var questionChosen = [Int]()
     
-    private lazy var questionLabel = QALabel(labelTitle: QuizGame.shared.questions[randomQuestion].questionName, numberOfLines: 4, fontSize: 20)
+    private lazy var questionLabel = QALabel(labelTitle: QuizGame.shared.questions[randomQuestion].getQuestionName(), numberOfLines: 4, fontSize: 20)
     
     
     private let questionProgress: UIProgressView = {
@@ -71,13 +71,13 @@ class QuizPageViewController: UIViewController {
 extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return QuizGame.shared.questions[section].questionAnswer.count
+        return QuizGame.shared.questions[section].getQuestionAnswer().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as! AnswerTableViewCell
         
-        cell.configureCell(title: QuizGame.shared.questions[randomQuestion].questionAnswer[indexPath.row].questionAnswer)
+        cell.configureCell(title: QuizGame.shared.questions[randomQuestion].getQuestionAnswer()[indexPath.row].questionAnswer)
         cell.selectionStyle = .none
         
         return cell
@@ -88,7 +88,7 @@ extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
         questionCounter += 1
         questionProgress.progress += 0.2
         
-        if QuizGame.shared.questions[randomQuestion].questionAnswer[indexPath.row].isCorrect {
+        if QuizGame.shared.questions[randomQuestion].getQuestionAnswer()[indexPath.row].isCorrect {
             scoreCounter += 1
         }
         
@@ -103,7 +103,7 @@ extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         }
         else {
-            questionLabel.text = QuizGame.shared.questions[randomQuestion].questionName
+            questionLabel.text = QuizGame.shared.questions[randomQuestion].getQuestionName()
             tableView.reloadData()
         }
         
@@ -195,6 +195,9 @@ extension QuizPageViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.alwaysBounceVertical = false
+        tableView.alwaysBounceHorizontal = false
+        tableView.isScrollEnabled = false
         
         NSLayoutConstraint.activate([
             tableView.centerYAnchor.constraint(equalTo: answersContainerView.centerYAnchor),
