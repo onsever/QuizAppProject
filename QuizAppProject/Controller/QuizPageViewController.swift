@@ -59,8 +59,14 @@ class QuizPageViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(resetGame), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func resetGame() {
         questionChosen.removeAll()
         randomQuestion = Int.random(in: 0..<QuizGame.shared.questions.count)
+        questionLabel.text = QuizGame.shared.questions[randomQuestion].getQuestionName()
+        tableView.reloadData()
         scoreCounter = 0
         questionCounter = 0
         questionProgress.progress = 0.2
