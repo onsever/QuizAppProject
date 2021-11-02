@@ -101,8 +101,8 @@
 			children = (
 				BAE16B03272F7F7A00F54881 /* Question.swift */,
 				BAE16B05272F7FA300F54881 /* Answer.swift */,
-				BAE16B07272F804A00F54881 /* QuizGame.swift */,
 				BA6E67B92730BC0400317006 /* Result.swift */,
+				BAE16B07272F804A00F54881 /* QuizGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

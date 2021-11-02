@@ -76,10 +76,6 @@ final class QuizGame {
         ]),
     ]
     
-    public func checkAnswer(answer: Answer, question: Question) -> Bool {
-        return question.questionAnswer.contains(where: { $0.questionAnswer == answer.questionAnswer }) && answer.isCorrect
-    }
-    
     public func returnResult(scoreCounter: Int) -> Result {
         switch scoreCounter {
         case 0, 1, 2:
