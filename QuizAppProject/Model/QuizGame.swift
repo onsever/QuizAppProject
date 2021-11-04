@@ -80,6 +80,22 @@ final class QuizGame {
         return self.questions
     }
     
+    public func getQuestion(with index: Int) -> String {
+        return questions[index].getQuestionName()
+    }
+    
+    public func getAnswer(with index: Int, row: Int) -> String {
+        return questions[index].getQuestionAnswer()[row].questionAnswer
+    }
+    
+    public func isCorrect(with index: Int, row: Int) -> Bool {
+        return questions[index].getQuestionAnswer()[row].isCorrect
+    }
+    
+    public func getCount(with index: Int) -> Int {
+        return questions[index].getQuestionAnswer().count
+    }
+    
     public func returnResult(scoreCounter: Int) -> Result {
         switch scoreCounter {
         case 0, 1, 2:
