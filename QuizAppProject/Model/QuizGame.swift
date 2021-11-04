@@ -13,7 +13,7 @@ final class QuizGame {
     
     init() {}
     
-    public let questions: [Question] = [
+    private let questions: [Question] = [
         Question(questionName: "Who founded Apple Computer?", questionAnswer: [
             Answer(questionAnswer: "Stephen Fry", isCorrect: false),
             Answer(questionAnswer: "Bill Gates", isCorrect: false),
@@ -75,6 +75,10 @@ final class QuizGame {
             Answer(questionAnswer: "Redundant Array of Inexpensive Disks", isCorrect: true)
         ]),
     ]
+    
+    public func getQuestions() -> [Question] {
+        return self.questions
+    }
     
     public func returnResult(scoreCounter: Int) -> Result {
         switch scoreCounter {

@@ -16,10 +16,10 @@ class QuizPageViewController: UIViewController {
     
     private var questionCounter: Int = 0
     private var scoreCounter: Int = 0
-    private var randomQuestion: Int = Int.random(in: 0..<QuizGame.shared.questions.count)
+    private var randomQuestion: Int = Int.random(in: 0..<QuizGame.shared.getQuestions().count)
     private var questionChosen = [Int]()
     
-    private lazy var questionLabel = QALabel(labelTitle: QuizGame.shared.questions[randomQuestion].getQuestionName(), numberOfLines: 4, fontSize: 20)
+    private lazy var questionLabel = QALabel(labelTitle: QuizGame.shared.getQuestions()[randomQuestion].getQuestionName(), numberOfLines: 4, fontSize: 20)
     
     
     private let questionProgress: UIProgressView = {
@@ -64,8 +64,8 @@ class QuizPageViewController: UIViewController {
     
     @objc private func resetGame() {
         questionChosen.removeAll()
-        randomQuestion = Int.random(in: 0..<QuizGame.shared.questions.count)
-        questionLabel.text = QuizGame.shared.questions[randomQuestion].getQuestionName()
+        randomQuestion = Int.random(in: 0..<QuizGame.shared.getQuestions().count)
+        questionLabel.text = QuizGame.shared.getQuestions()[randomQuestion].getQuestionName()
         tableView.reloadData()
         scoreCounter = 0
         questionCounter = 0
@@ -77,13 +77,13 @@ class QuizPageViewController: UIViewController {
 extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return QuizGame.shared.questions[section].getQuestionAnswer().count
+        return QuizGame.shared.getQuestions()[section].getQuestionAnswer().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as! AnswerTableViewCell
         
-        cell.configureCell(title: QuizGame.shared.questions[randomQuestion].getQuestionAnswer()[indexPath.row].questionAnswer)
+        cell.configureCell(title: QuizGame.shared.getQuestions()[randomQuestion].getQuestionAnswer()[indexPath.row].questionAnswer)
         cell.selectionStyle = .none
         
         return cell
@@ -94,12 +94,12 @@ extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
         questionCounter += 1
         questionProgress.progress += 0.2
         
-        if QuizGame.shared.questions[randomQuestion].getQuestionAnswer()[indexPath.row].isCorrect {
+        if QuizGame.shared.getQuestions()[randomQuestion].getQuestionAnswer()[indexPath.row].isCorrect {
             scoreCounter += 1
         }
         
         while questionChosen.contains(randomQuestion) {
-            randomQuestion = Int.random(in: 0..<QuizGame.shared.questions.count)
+            randomQuestion = Int.random(in: 0..<QuizGame.shared.getQuestions().count)
         }
         questionChosen.append(randomQuestion)
         
@@ -109,7 +109,7 @@ extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         }
         else {
-            questionLabel.text = QuizGame.shared.questions[randomQuestion].getQuestionName()
+            questionLabel.text = QuizGame.shared.getQuestions()[randomQuestion].getQuestionName()
             tableView.reloadData()
         }
         
