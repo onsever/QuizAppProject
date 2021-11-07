@@ -13,7 +13,7 @@ class QuizScoreViewController: UIViewController {
     
     private let containerView = UIView()
     private let imageView = QAImageView()
-    private lazy var tryAgainButton = QAButton(title: scoreCounter > 3 ? "Play again!": "Try again!", color: .darkCharcoal)
+    private lazy var tryAgainButton = QAButton(title: scoreCounter > 2 ? "Play again!": "Try again!", color: .darkCharcoal)
     private lazy var resultLabel = QALabel(labelTitle: QuizGame.shared.returnResult(scoreCounter: scoreCounter).getResultText(), numberOfLines: 1, fontSize: 35)
     
     private lazy var scoreLabel: UILabel = {

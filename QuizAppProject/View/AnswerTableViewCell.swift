@@ -9,7 +9,7 @@ import UIKit
 
 class AnswerTableViewCell: UITableViewCell {
     
-    static let identifier = "answerCell"
+    public static let identifier = "answerCell"
     
     private let answerLabel: UILabel = {
         let answerLabel = UILabel()
