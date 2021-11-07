@@ -9,9 +9,13 @@ import UIKit
 
 class StartPageViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private let imageView = QAImageView(image: "quizApp_logo")
     private let startGameButton = QAButton(title: "Start Game", color: .darkCharcoal)
     private let containerView = UIView()
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +25,21 @@ class StartPageViewController: UIViewController {
         configureImageView()
         configureGameButton()
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
+    
+    // MARK: - Selectors
 
     @objc private func startGamePressed() {
         navigationController?.pushViewController(QuizPageViewController(), animated: true)
     }
 
 }
+
+// MARK: - Configuring UI Elements
 
 extension StartPageViewController {
     

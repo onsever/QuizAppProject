@@ -73,7 +73,7 @@ final class QuizGame {
             Answer(questionAnswer: "Reload Advanced Intel Device", isCorrect: false),
             Answer(questionAnswer: "Relocate Array Inside Drive", isCorrect: false),
             Answer(questionAnswer: "Redundant Array of Inexpensive Disks", isCorrect: true)
-        ]),
+        ])
     ]
     
     public func getQuestions() -> [Question] {

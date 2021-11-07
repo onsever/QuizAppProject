@@ -9,6 +9,8 @@ import UIKit
 
 class QuizScoreViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var scoreCounter: Int = 0
     
     private let containerView = UIView()
@@ -27,6 +29,8 @@ class QuizScoreViewController: UIViewController {
         
         return scoreLabel
     }()
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +47,21 @@ class QuizScoreViewController: UIViewController {
         imageView.image = UIImage(named: QuizGame.shared.returnResult(scoreCounter: scoreCounter).getResultImage())
     }
     
+    // MARK: - Other Functions
+    
     public func setScoreCounter(scoreCounter: Int) {
         return self.scoreCounter = scoreCounter
     }
+    
+    // MARK: - Selectors
     
     @objc private func resetGame() {
         navigationController?.popViewController(animated: true)
     }
     
 }
+
+// MARK: - Configuring UI Elements
 
 extension QuizScoreViewController {
     
@@ -110,7 +120,5 @@ extension QuizScoreViewController {
             tryAgainButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    
     
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class QuizPageViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private lazy var tableView = UITableView()
     private let questionContainerView = UIView()
     private let progressContainerView = UIView()
@@ -33,6 +35,8 @@ class QuizPageViewController: UIViewController {
         
         return questionProgress
     }()
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,8 @@ class QuizPageViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(resetGame), userInfo: nil, repeats: false)
     }
     
+    // MARK: - Selectors
+    
     @objc private func resetGame() {
         questionChosen.removeAll()
         randomQuestion = Int.random(in: 0..<QuizGame.shared.getQuestions().count)
@@ -73,6 +79,8 @@ class QuizPageViewController: UIViewController {
     }
 
 }
+
+// MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -120,8 +128,9 @@ extension QuizPageViewController: UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     
-        
 }
+
+// MARK: - Configuring UI Elements
 
 extension QuizPageViewController {
     
@@ -212,8 +221,6 @@ extension QuizPageViewController {
             tableView.heightAnchor.constraint(equalToConstant: 230)
         ])
     }
-    
-    
     
 }
 
