@@ -23,7 +23,6 @@ class QuizPageViewController: UIViewController {
     
     private lazy var questionLabel = QALabel(labelTitle: QuizGame.shared.getQuestion(with: randomQuestion), numberOfLines: 4, fontSize: 20)
     
-    
     private let questionProgress: UIProgressView = {
         let questionProgress = UIProgressView(progressViewStyle: .bar)
         questionProgress.translatesAutoresizingMaskIntoConstraints = false
