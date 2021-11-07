@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  QuizPageViewController.swift
 //  QuizAppProject
 //
 //  Created by Onurcan Sever on 2021-10-31.
