@@ -63,6 +63,7 @@ class QuizPageViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // After the current view disappears, 0.8 seconds later, properties which handles game logic resets it self.
         Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(resetGame), userInfo: nil, repeats: false)
     }
     
